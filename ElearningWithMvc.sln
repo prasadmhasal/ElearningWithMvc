@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35219.272
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElearningWithMvc", "ElearningWithMvc\ElearningWithMvc.csproj", "{333FFE4E-8F4E-439A-B436-E1CF95E18BDD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{333FFE4E-8F4E-439A-B436-E1CF95E18BDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{333FFE4E-8F4E-439A-B436-E1CF95E18BDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{333FFE4E-8F4E-439A-B436-E1CF95E18BDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{333FFE4E-8F4E-439A-B436-E1CF95E18BDD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {53706AB3-3F2C-48B3-8796-909C01B84162}
+	EndGlobalSection
+EndGlobal
