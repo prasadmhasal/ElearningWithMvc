@@ -7,37 +7,114 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ElearningWithMvc.styles.css" asp-append-version="true" />
-
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link href="~/content/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/content/plugins/owlcarousel2-2.2.1/owl.theme.default.css" rel="stylesheet" />
+    <link href="~/content/plugins/owlcarousel2-2.2.1/owl.carousel.css" rel="stylesheet" />
+    <link href="~/content/plugins/owlcarousel2-2.2.1/animate.css" rel="stylesheet" />
+    <link href="~/content/plugins/video-js/video-js.css" rel="stylesheet" />
+    <link href="~/content/mysitecss/bootstrap4/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/content/mysitecss/responsive.css" rel="stylesheet" />
+    <link href="~/content/mysitecss/main_styles.css" rel="stylesheet" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">ElearningWithMvc</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+	<!-- Header -->
+
+	<header class="header my-nav">
+
+		<!-- Top Bar -->
+		<div class="top_bar">
+			<div class="top_bar_container">
+				<div class="container">
+					<div class="row">
+						<div class="col">
+							<div class="top_bar_content d-flex flex-row align-items-center justify-content-start">
+								<ul class="top_bar_contact_list">
+									<li><div class="question">Have any questions?</div></li>
+									<li>
+										<div>0255-3988-3988</div>
+									</li>
+									<li>
+										<div>e-learning@help.com</div>
+									</li>
+								</ul>
+								<div class="top_bar_login ml-auto">
+									<asp:Label ID="lblFullName" runat="server" CssClass="mr-3"></asp:Label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Header Content -->
+		<div class="header_container">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="header_content d-flex flex-row align-items-center justify-content-start">
+							<div class="logo_container">
+								<a href="#">
+									<div class="logo_content d-flex flex-row align-items-end justify-content-start">
+										<div class="logo_img"><img src="../images/logo.png" alt=""></div>
+										<div class="logo_text">E-Learning</div>
+									</div>
+								</a>
+							</div>
+							<nav class="main_nav_contaner ml-auto">
+								<ul class="main_nav">
+									<li class="active"><a href="UserHomepage.aspx">Home</a></li>
+									<li><a href="allCourses.aspx" ">All Courses</a></li>
+									<li><a href="myCourse.aspx">My Course</a></li>
+									<li><a href="about.aspx">About Us</a></li>
+									<li><a href="cart.aspx">Cart</a></li>
+
+								</ul>
+								<asp:Button ID="Button1" runat="server" Text="Logout" Class="btn btn-outline-dark btn-rounded ml-3" OnClick="Button1_Click" UseSubmitBehavior="false" />
+
+								<!-- Hamburger -->
+
+								<div class="hamburger menu_mm">
+									<i class="fa fa-bars menu_mm" aria-hidden="true"></i>
+								</div>
+							</nav>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Header Search Panel -->
+		<div class="header_search_container">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="header_search_content d-flex flex-row align-items-center justify-content-end">
+							<form action="#" class="header_search_form">
+								<input type="search" class="search_input" placeholder="Search" required="required">
+								<button class="header_search_button d-flex flex-column align-items-center justify-content-center">
+									<i class="fa fa-search" aria-hidden="true"></i>
+								</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted myfoot">
         <div class="container">
             &copy; 2024 - ElearningWithMvc - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
@@ -45,6 +122,20 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/content/mysitecss/bootstrap4/popper.js"></script>
+    <script src="~/content/mysitecss/bootstrap4/bootstrap.min.js"></script>
+    <script src="~/content/plugins/greensock/tweenmax.min.js"></script>
+	
+	<script src="~/content/plugins/greensock/TimelineMax.min.js"></script>
+	<script src="~/content/plugins/scrollmagic/ScrollMagic.min.js"></script>
+	<script src="~/content/plugins/greensock/animation.gsap.min.js"></script>
+	<script src="~/content/plugins/greensock/ScrollToPlugin.min.js"></script>
+	<script src="~/content/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
+	<script src="~/content/plugins/easing/easing.js"></script>
+	<script src="~/content/plugins/video-js/video.min.js"></script>
+	<script src="~/content/plugins/video-js/Youtube.min.js"></script>
+	<script src="~/content/plugins/parallax-js-master/parallax.min.js"></script>
+	<script src="~/content/js/custom.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

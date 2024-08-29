@@ -1,50 +1,60 @@
-﻿
+﻿@model Auth
+<link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 <link href="~/css/signin.css" rel="stylesheet" />
 
-<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
 
+<partial name="Notification"/>
 
+<form  method="post">
+    <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
+        <div class="container">
+            <div class="card login-card" style="height:600px">
+                <div class="row no-gutters">
+                    <div class="col-md-0">
+                        <img src="./Content/images/login.jpg" alt="login" class="login-card-img" />
+                    </div>
+                    <div class="col-md-7">
+                        <div class="card-body">
+                            <div class="brand-wrapper">
+                                <img src="./Content/images/logo.png" alt="logo" class="logo" />
+                            </div>
+                            <p class="login-card-description">Register a new account</p>
 
+                            <div class="form-group">
+                                <label  class="sr-only"></label>
+                                <input asp-for="Username" class="form-control" placeholder="Full Name" />
+                            </div>
+                            <div class="form-group mb-4"> 
+                                <label  class="sr-only"></label>
+                                <input asp-for="Email" class="form-control" placeholder="Email" />
+                            </div>
+                            <div class="form-group mb-4">
+                                <label asp-for="Password" class="sr-only"></label>
+                                <input asp-for="Password" type="password" class="form-control" placeholder="Set Password" />
+                            </div>
+                           
+                            <input type="submit" class="btn btn-block login-btn mb-4">Register</input>
 
-
-<section>
-    <div class="container">
-        <div class="user signinBx">
-            <div class="imgBx"><img src="https://raw.githubusercontent.com/WoojinFive/CSS_Playground/master/Responsive%20Login%20and%20Registration%20Form/img1.jpg" alt="" /></div>
-            <div class="formBx">
-                <form action="" onsubmit="return false;">
-                    <h2>Sign In</h2>
-                    <input type="text" name="" placeholder="Username" />
-                    <input type="password" name="" placeholder="Password" />
-                    <input type="submit" name="" value="Login" />
-                    <p class="signup">
-                        Don't have an account ?
-                        <a href="#" onclick="toggleForm()">Sign Up.</a>
-                    </p>
-                </form>
+                            <a href="#" class="forgot-password-link">Forgot password?</a>
+                            <p class="login-card-footer-text">
+                                Already have an Account? 
+                                <a asp-action="SignUp" class="text-reset">Login Here</a>
+                            </p>
+                            <nav class="login-card-footer-nav">
+                                <!-- Add any footer links if needed -->
+                            </nav>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="user signupBx">
-            <div class="formBx">
-                <form action="" onsubmit="return false;">
-                    <h2>Create an account</h2>
-                    <input type="text" name="" placeholder="Username" />
-                    <input type="email" name="" placeholder="Email Address" />
-                    <input type="password" name="" placeholder="Create Password" />
-                    <input type="password" name="" placeholder="Confirm Password" />
-                    <input type="submit" name="" value="Sign Up" />
-                    <p class="signup">
-                        Already have an account ?
-                        <a href="#" onclick="toggleForm()">Sign Up.</a>
-                    </p>
-                </form>
-            </div>
-            <div class="imgBx"><img src="https://raw.githubusercontent.com/WoojinFive/CSS_Playground/master/Responsive%20Login%20and%20Registration%20Form/img2.jpg" alt="" /></div>
-        </div>
-    </div>
-</section>
-
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="~/js/signin.js"></script>
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
+    </main>
+</form>
 <script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js">    </script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
