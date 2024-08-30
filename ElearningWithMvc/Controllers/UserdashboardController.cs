@@ -8,5 +8,10 @@ namespace ElearningWithMvc.Controllers
 		{
 			return View();
 		}
+
+		public IActionResult Userhome()
+		{
+			return View();
+		}
 	}
 }

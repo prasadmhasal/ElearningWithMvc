@@ -80,7 +80,7 @@ namespace ElearningWithMvc.Controllers
                     HttpContext.Session.SetString("Email", data.Email);
                     HttpContext.Session.SetString("Username", data.Username);
                     TempData["Login"] = "login sucessfully";
-                    return RedirectToAction("Index", "Dashboard");
+                    return RedirectToAction("Index", "Userdashboard");
                 }
                 else
                 {
