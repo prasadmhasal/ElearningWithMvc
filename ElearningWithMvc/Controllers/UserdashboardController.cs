@@ -13,5 +13,20 @@ namespace ElearningWithMvc.Controllers
 		{
 			return View();
 		}
+
+		public IActionResult AllCourse()
+		{
+			return View();
+		}
+
+		public IActionResult About()
+		{
+			return View();
+		}
+
+		public IActionResult Cart()
+		{
+			return View();
+		}
 	}
 }

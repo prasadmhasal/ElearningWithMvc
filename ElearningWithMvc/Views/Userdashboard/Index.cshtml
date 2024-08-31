@@ -1,12 +1,12 @@
 ﻿ 
-<link rel="stylesheet" type="text/css" href="../styles/bootstrap4/bootstrap.min.css">
-<link href="~/content/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="~/content/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-<link rel="stylesheet" type="text/css" href="~/content/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-<link rel="stylesheet" type="text/css" href="~/content/plugins/OwlCarousel2-2.2.1/animate.css">
-<link href="~/content/plugins/video-js/video-js.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="~/content/styles/main_styles.css">
-<link rel="stylesheet" type="text/css" href="~/content/styles/responsive.css">
+@* <link rel="stylesheet" type="text/css" href="/Content/mysitecss/bootstrap4/bootstrap.min.css">
+<link href="/Content/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="/Content/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+<link rel="stylesheet" type="text/css" href="/Content/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+<link rel="stylesheet" type="text/css" href="/Content/plugins/OwlCarousel2-2.2.1/animate.css">
+<link href="/Content/plugins/video-js/video-js.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="/Content/mysitecss/main_styles.css">
+<link rel="stylesheet" type="text/css" href="/Content/mysitecss/responsive.css"> *@
 
 
 <style>
@@ -168,7 +168,94 @@
 </div>
 
 
-<script src="~/content/mysitecss/bootstrap4/popper.js"></script>
+
+
+
+<!-- Milestones -->
+
+<div class="milestones">
+	@* <!-- Background image artis https://unsplash.com/@thepootphotographer --> *@
+	<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="~/Content/images/milestones.jpg" data-speed="0.8"></div>
+	<div class="container">
+		<div class="row milestones_container">
+
+			<!-- Milestone -->
+			<div class="col-lg-3 milestone_col">
+				<div class="milestone text-center">
+					<div class="milestone_icon"><img src="~/Content/images/milestone_1.svg" alt=""></div>
+					<div class="milestone_counter" data-end-value="1548">0</div>
+					<div class="milestone_text">Online Courses</div>
+				</div>
+			</div>
+
+			<!-- Milestone -->
+			<div class="col-lg-3 milestone_col">
+				<div class="milestone text-center">
+					<div class="milestone_icon"><img src="~/Content/images/milestone_2.svg" alt=""></div>
+					<div class="milestone_counter" data-end-value="7286">0</div>
+					<div class="milestone_text">Students</div>
+				</div>
+			</div>
+
+			<!-- Milestone -->
+			<div class="col-lg-3 milestone_col">
+				<div class="milestone text-center">
+					<div class="milestone_icon"><img src="~/Content/images/milestone_3.svg" alt=""></div>
+					<div class="milestone_counter" data-end-value="257">0</div>
+					<div class="milestone_text">Teachers</div>
+				</div>
+			</div>
+
+			<!-- Milestone -->
+			<div class="col-lg-3 milestone_col">
+				<div class="milestone text-center">
+					<div class="milestone_icon"><img src="~/Content/images/milestone_4.svg" alt=""></div>
+					<div class="milestone_counter" data-end-value="39">0</div>
+					<div class="milestone_text">Countries</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+<!-- Video -->
+<h1 style="text-align:center;margin:40px 0px">Watch us to Know More</h1>
+<div class="video">
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<div class="video_container_outer">
+					<div class="video_container">
+						<iframe id="vid1" src="https://www.youtube.com/embed/KLOcj5qvOio?autoplay=1&mute=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Join -->
+
+<div class="join">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-10 offset-lg-1">
+				<div class="section_title text-center"><h2>Join Our Platform Today</h2></div>
+				<div class="section_subtitle">Suspendisse tincidunt magna eget massa hendrerit efficitur. Ut euismod pellentesque imperdiet. Cras laoreet gravida lectus, at viverra lorem venenatis in. Aenean id varius quam. Nullam bibendum interdum dui, ac tempor lorem convallis ut</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+@* <script src="~/content/mysitecss/bootstrap4/popper.js"></script>
 <script src="~/content/mysitecss/bootstrap4/bootstrap.min.js"></script>
 <script src="~/content/plugins/greensock/tweenmax.min.js"></script>
 
@@ -184,4 +271,4 @@
 <script src="~/content/js/custom.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script> *@

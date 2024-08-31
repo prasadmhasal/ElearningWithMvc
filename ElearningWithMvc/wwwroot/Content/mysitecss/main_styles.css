@@ -1441,11 +1441,10 @@ section
 {
 	max-width: 100%;
 }
-.milestone_counter
-{
+.milestone_counter {
 	font-size: 48px;
 	font-weight: 500;
-	color: #FFFFFF;
+	color: black;
 	line-height: 0.75;
 	margin-top: 37px;
 }
@@ -1453,7 +1452,7 @@ section
 {
 	font-size: 18px;
 	font-weight: 500;
-	color: #FFFFFF;
+	color: black;
 	margin-top: 21px;
 	line-height: 0.75;
 }

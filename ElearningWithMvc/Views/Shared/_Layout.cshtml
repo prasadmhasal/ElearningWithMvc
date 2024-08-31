@@ -4,19 +4,19 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - ElearningWithMvc</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/ElearningWithMvc.styles.css" asp-append-version="true" />
+   @*  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> *@
+    @* <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" /> *@
+  @*   <link rel="stylesheet" href="~/ElearningWithMvc.styles.css" asp-append-version="true" /> *@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link href="~/content/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="~/content/plugins/owlcarousel2-2.2.1/owl.theme.default.css" rel="stylesheet" />
-    <link href="~/content/plugins/owlcarousel2-2.2.1/owl.carousel.css" rel="stylesheet" />
-    <link href="~/content/plugins/owlcarousel2-2.2.1/animate.css" rel="stylesheet" />
-    <link href="~/content/plugins/video-js/video-js.css" rel="stylesheet" />
-    <link href="~/content/mysitecss/bootstrap4/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/content/mysitecss/responsive.css" rel="stylesheet" />
-    <link href="~/content/mysitecss/main_styles.css" rel="stylesheet" />
+    <link href="/Content/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="/Content/plugins/owlcarousel2-2.2.1/owl.theme.default.css" rel="stylesheet" />
+    <link href="/Content/plugins/owlcarousel2-2.2.1/owl.carousel.css" rel="stylesheet" />
+    <link href="/Content/plugins/owlcarousel2-2.2.1/animate.css" rel="stylesheet" />
+    <link href="/Content/plugins/video-js/video-js.css" rel="stylesheet" />
+    <link href="/Content/mysitecss/bootstrap4/bootstrap.min.css" rel="stylesheet" />
+    <link href="/Content/mysitecss/responsive.css" rel="stylesheet" />
+    <link href="/Content/mysitecss/main_styles.css" rel="stylesheet" />
 </head>
 <body>
 	<!-- Header -->
@@ -58,18 +58,18 @@
 							<div class="logo_container">
 								<a href="#">
 									<div class="logo_content d-flex flex-row align-items-end justify-content-start">
-										<div class="logo_img"><img src="../images/logo.png" alt=""></div>
+										<div class="logo_img"><img src="/Content/images/logo.png" alt=""></div>
 										<div class="logo_text">E-Learning</div>
 									</div>
 								</a>
 							</div>
 							<nav class="main_nav_contaner ml-auto">
 								<ul class="main_nav">
-									<li class="active"><a href="UserHomepage.aspx">Home</a></li>
-									<li><a href="allCourses.aspx" ">All Courses</a></li>
+									<li class="active"><a <a asp-controller="Userdashboard" asp-action="Index">Home</a></li>
+									<li><a asp-controller="Userdashboard" asp-action="AllCourse">All Courses</a></li>
 									<li><a href="myCourse.aspx">My Course</a></li>
-									<li><a href="about.aspx">About Us</a></li>
-									<li><a href="cart.aspx">Cart</a></li>
+									<li><a asp-controller="Userdashboard" asp-action="About">About Us</a></li>
+									<li><a asp-controller="Userdashboard" asp-action="Cart">Cart</a></li>
 
 								</ul>
 								
@@ -108,17 +108,100 @@
 
 
 
-    <div class="container-fluid p-0">
-        <main role="main" class="pb-3">
+    <div class="container-fluid p-0 overflow-hidden">
+		<main role="main" class="pb-3 overflow-hidden">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted myfoot">
-        <div class="container">
-            &copy; 2024 - ElearningWithMvc - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
-    </footer>
+	<footer class="footer">
+		<div class="container">
+			<div class="row">
+
+				<!-- About -->
+				<div class="col-lg-3 footer_col">
+					<div class="footer_about">
+						<div class="logo_container">
+							<a href="#">
+								<div class="logo_content d-flex flex-row align-items-end justify-content-start">
+									<div class="logo_img"><img src="images/logo.png" alt=""></div>
+									<div class="logo_text">learn</div>
+								</div>
+							</a>
+						</div>
+						<div class="footer_about_text">
+							<p>Maecenas rutrum viverra sapien sed fermentum. Morbi tempor odio eget lacus tempus pulvinar.</p>
+						</div>
+						<div class="footer_social">
+							<ul>
+								<li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+								<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+								<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+								<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+							</ul>
+						</div>
+						<div class="copyright">
+							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+							Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-3 footer_col">
+					<div class="footer_links">
+						<div class="footer_title">Quick menu</div>
+						<ul class="footer_list">
+							<li><a href="index.html">Home</a></li>
+							<li><a href="about.html">About us</a></li>
+							<li><a href="#">Testimonials</a></li>
+							<li><a href="#">Services</a></li>
+							<li><a href="contact.html">Contact</a></li>
+							<li><a href="#">Facts</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-lg-3 footer_col">
+					<div class="footer_links">
+						<div class="footer_title">Useful Links</div>
+						<ul class="footer_list">
+							<li><a href="courses.html">Courses</a></li>
+							<li><a href="#">Events</a></li>
+							<li><a href="news.html">News</a></li>
+							<li><a href="#">Teachers</a></li>
+							<li><a href="#">Links</a></li>
+							<li><a href="#">FAQ</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-lg-3 footer_col">
+					<div class="footer_contact">
+						<div class="footer_title">Contact Us</div>
+						<div class="footer_contact_info">
+							<div class="footer_contact_item">
+								<div class="footer_contact_title">Address:</div>
+								<div class="footer_contact_line">1481 Creekside Lane Avila Beach, CA 93424</div>
+							</div>
+							<div class="footer_contact_item">
+								<div class="footer_contact_title">Phone:</div>
+								<div class="footer_contact_line">+53 345 7953 32453</div>
+							</div>
+							<div class="footer_contact_item">
+								<div class="footer_contact_title">Email:</div>
+								<div class="footer_contact_line">yourmail@gmail.com</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+
+
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

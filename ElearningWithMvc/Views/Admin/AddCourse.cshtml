@@ -1,0 +1,76 @@
+﻿@model ElearningWithMvc.Models.AddCourse
+
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<partial name="Notification"/>
+<link href="~/admincontent/css/addcourse.css" rel="stylesheet" />
+<div class="container-fluid py-4">
+    <div class="row">
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="form1">
+                <div class="registration-form">
+                    <form method="post" enctype="multipart/form-data">
+                        <div class="form-icon">
+                            <span>
+                                <i class="fa-solid fa-file-import"></i>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="CourseName" class="control-label"></label>
+                            <input asp-for="CourseName" class="form-control item " />
+                            <span asp-validation-for="CourseName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="InstructorName" class="control-label"></label>
+                            <input asp-for="InstructorName" class="form-control item" />
+                            <span asp-validation-for="InstructorName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="CourseImage" class="control-label"></label>
+                            <input type="file" asp-for="CourseImage" class="form-control item" />
+                            <span asp-validation-for="CourseImage" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Descripation" class="control-label"></label>
+                            <input asp-for="Descripation" class="form-control item" />
+                            <span asp-validation-for="Descripation" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Price" class="control-label"></label>
+                            <input asp-for="Price" class="form-control item" />
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Day" class="control-label"></label>
+                            <input asp-for="Day" class="form-control item" />
+                            <span asp-validation-for="Day" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Level" class="control-label"></label>
+                            <select asp-for="Level" class="form-control item">
+                                <option value="Beginner">Beginner</option>
+                                <option value="InterMediate">InterMediate</option>
+                                <option value="Advance">Advance</option>
+                            </select>
+                            <span asp-validation-for="Level" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-block create-account">Add</button>
+                        </div>
+                    </form>
+
+                </div>
+                <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+                <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+                <script src="AdminContent/js/script.js"></script>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
