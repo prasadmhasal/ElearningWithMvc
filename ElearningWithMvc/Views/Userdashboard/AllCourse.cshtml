@@ -1,38 +1,56 @@
-﻿
+﻿@model List<AddCourse>
 
 
-<div style="margin-top: 150px;"></div>
-<nav class="navbar">
-    <div class="form-inline mx-auto mt-3">
-        <input type="text" class="form-control mr-sm-2" placeholder="Search" />
-        <button class="btn btn-outline-warning my-2 my-sm-0" type="button">Search</button>
-    </div>
-</nav>
-<div class="container py-5">
+<div class="container mt-5">
+    <h2 style="text-align:center;margin-top:100px;font-weight:bold">Latest Courses and Videos</h2>
     <div class="row justify-content-center mb-3">
         <div class="col-md-12 col-xl-10">
-            <div class="card shadow-0 border rounded-3">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-md-3 mb-4 mb-lg-0">
-                            <img src="~/Content/Images/course_6.jpg" class="img-fluid rounded" />
-                        </div>
-                        <div class="col-md-6">
-                            <h5>Course Name</h5>
-                            <p class="text-muted small">SubCourse Name</p>
-                            <p class="text-muted small">Topic Name</p>
-                            <p class="text-truncate">E-learning courses offer flexible, accessible education through online platforms, covering a wide range of subjects.</p>
-                        </div>
-                        <div class="col-md-3 text-end">
-                            <h4>₹Price</h4>
-                            <span class="text-danger"><s>₹1000.99</s></span>
-                            <h6 class="text-success">Special Offer</h6>
-                            <button class="btn btn-warning btn-sm mt-2" type="button">Details</button>
-                            <button class="btn btn-outline-danger btn-sm mt-2" type="button">Add to wishlist</button>
+            @foreach (var item in Model)
+            {
+                <div class="card shadow-0 border rounded-3 mb-4">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
+                                <div class="bg-image hover-zoom ripple rounded ripple-surface">
+                                    <img src="@item.CourseImage" class="w-100" />
+                                    <a href="your-url.html">
+                                        <div class="hover-overlay">
+                                            <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6 col-xl-6">
+                                <h5>@item.CourseName</h5>
+                                <div class="mt-1 mb-0 text-muted small">
+                                    <span>@item.InstructorName</span>
+                                </div>
+                                <p class="text-truncate mb-4 mb-md-0">
+                                    @item.Descripation<br />
+                                </p>
+                            </div>
+
+                            <div class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
+                                <div class="d-flex flex-row align-items-center mb-1">
+                                    <h4 class="mb-1 me-1">Price</h4>
+                                    <span class="text-danger">₹ @item.Price</span>
+                                </div>
+                                <h6 class="text-success">Special Offer</h6>
+                                <div class="d-flex flex-column mt-4">
+                                    <a asp-controller="Userdashboard" asp-action="SubCourseList" asp-route-courseName="@item.CourseName" class="btn btn-warning">Course List</a>
+
+                                    <button class="btn btn-outline-danger mt-2" type="button">Add to wishlist</button>
+                                </div>
+                            </div>
+
+
+
                         </div>
                     </div>
                 </div>
-            </div>
+            }
         </div>
     </div>
-</div>
+
+    
+    </div>

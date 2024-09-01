@@ -19,6 +19,7 @@ namespace ElearningWithMvc.Controllers
 		{
 			var topCourses = db.AddCourses.OrderBy(c => c.CourseId).Take(5).ToList();
 			return View(topCourses);
+			
 		}
 
 		public IActionResult Userhome()
@@ -28,7 +29,9 @@ namespace ElearningWithMvc.Controllers
 
 		public IActionResult AllCourse()
 		{
-			return View();
+            var topCourses = db.AddCourses.ToList();
+            return View(topCourses);
+           
 		}
 
 		public IActionResult About()
@@ -36,14 +39,89 @@ namespace ElearningWithMvc.Controllers
 			return View();
 		}
 
-		public IActionResult Cart()
+
+        //public IActionResult AddToCart()
+        //{
+        //    return View();
+        //}
+
+        [HttpPost]
+        public IActionResult Cart(AddToCart model, List<string> SubCourse, List<string> VideoTitle, List<string> VideoUrl)
+        {
+            if (ModelState.IsValid)
+            {
+               var user = HttpContext.Session.GetString("Username");
+               
+                for (int i = 0; i < SubCourse.Count; i++)
+                {
+                    var cartItem = new AddToCart
+                    {
+                        CourseId = model.CourseId,
+                        CourseName = model.CourseName,
+                        InstructorName = model.InstructorName,
+                        CourseImage = model.CourseImage,
+                        Price = model.Price,
+                        Suser = user,
+                        SubCourse = SubCourse[i],
+                        VideoTitle = VideoTitle[i],
+                        VideoUrl = VideoUrl[i], 
+                        Quantity = model.Quantity 
+                    };
+
+                    db.AddToCart.Add(cartItem);
+                }
+
+                db.SaveChanges();
+
+                
+                //return RedirectToAction("Cart");
+            }
+
+         
+            return View(model);
+        }
+
+
+        public IActionResult Details(int id)
 		{
-			return View();
+            var course = db.AddCourses.Find(id);
+            if (course == null)
+            {
+                return NotFound();
+            }
+
+            var courseVideos = db.AddSubCourse.Where(v => v.Coursename == course.CourseName).ToList();
+
+            var viewModel = new AllCourse
+            {
+                Course = course,
+                AddSubCourse = courseVideos
+            };
+
+            return View(viewModel);
+        }
+
+		
+
+		public IActionResult SubCourseList(string CourseName)
+		{
+            var courses = db.AddCourses.Where(x=>x.CourseName == CourseName).ToList();
+            if (courses == null || !courses.Any())
+            {
+                return NotFound();
+            }
+
+            var courseVideos = db.AddSubCourse.Where(v => v.Coursename == CourseName).ToList();
+
+            var viewModel = new AllCourse
+            {
+                Course = courses.FirstOrDefault(),
+                AddSubCourse = courseVideos
+            };
+
+            return View(viewModel); 
 		}
 
-		public IActionResult Details()
-		{
-			return View();
-		}
+		
 	}
 }

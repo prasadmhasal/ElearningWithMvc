@@ -1,25 +1,27 @@
 ﻿
-
+@model List<AddCourse>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
 
 <div style="margin-top: 200px"></div>
 <div class="container">
+    @foreach (var a in Model)
+    {     
     <div class="row">
         <div class="col-md-7">
             <div class="project-info-box mt-0">
                 <h5>COURSE DETAILS</h5>
                 <p class="mb-0">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                   @a.Descripation
                 </p>
             </div>
 
             <div class="project-info-box">
-                <p><b>Course:</b> <span id="courseName" class="font-weight-bold" style="color: #ff8a00;">Course Name Here</span></p>
-                <p><b>Sub Course:</b> <span id="subCourseName" class="font-weight-bold" style="color: #dc3545;">Sub Course Name Here</span></p>
-                <p><b>Topic:</b> <span id="topicName" class="font-weight-bold" style="color: #ff8a00;">Topic Name Here</span></p>
+                <p><b>Course:</b> <span id="courseName" class="font-weight-bold" style="color: #ff8a00;">@a.CourseName</span></p>
+                <p><b>Sub Course:</b> <span id="subCourseName" class="font-weight-bold" style="color: #dc3545;">@a.CourseName</span></p>
+                <p><b>Level:</b> <span id="topicName" class="font-weight-bold" style="color: #ff8a00;">@a.Level</span></p>
                 <p><b>Provider:</b> E-Learning</p>
-                <p class="mb-0"><b>Price:</b> ₹ <span id="price" class="font-weight-bold" style="color: Green;">Price Here</span></p>
+                <p class="mb-0"><b>Price:</b> ₹ <span id="price" class="font-weight-bold" style="color: Green;">@a.Price</span></p>
             </div>
 
             <div class="project-info-box mt-2 mb-0">
@@ -41,13 +43,14 @@
             </div>
         </div>
 
-        <div class="col-md-5">
-            <iframe id="iframeVideo" class="rounded" width="420" height="270" frameborder="0" allowfullscreen></iframe>
+        <div class="col-md-5">    
+            <img src="@a.CourseImage" class="rounded" width="420" height="270" />
             <div class="project-info-box">
-                <button id="addToCart" class="btn btn-warning btn-block col-md-11 mt-3" type="button">Add to Cart</button>
+                <a> <input id="addToCart" asp-controller="Userdashboard" asp-action="AddToCart"  asp-route-id="@a.CourseId" class="btn btn-warning btn-block col-md-11 mt-3" type="submit" value="Add To Cart" /></a>
                 <button class="btn btn-outline-danger mt-2 btn-block col-md-11" type="button">Add to Wishlist</button>
             </div>
         </div>
     </div>
+    }
 </div>
 <div style="margin-top: 50px"></div>

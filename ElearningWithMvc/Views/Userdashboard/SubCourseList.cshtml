@@ -1,0 +1,87 @@
+﻿@model ElearningWithMvc.Models.AllCourse
+
+<div class="container">
+    <h2 style="text-align:center;margin-top:200px;font-weight:bold">Latest Courses and Videos</h2>
+    <div class="row justify-content-center mb-3">
+        <div class="col-md-12 col-xl-10">
+            <form id="addToCartForm" method="post">
+                <div class="card shadow-0 border rounded-3 mb-4">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
+                                <div class="bg-image hover-zoom ripple rounded ripple-surface">
+                                    <img src="@Model.Course.CourseImage" class="w-100" />
+                                    <input type="hidden" name="CourseImage" value="@Model.Course.CourseImage" />
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6 col-xl-6">
+                                <h5>@Model.Course.CourseName</h5>
+                                <input type="hidden" name="CourseName" value="@Model.Course.CourseName" />
+                                <input type="hidden" name="CourseId" value="@Model.Course.CourseId" />
+                                <div class="mt-1 mb-0 text-muted small">
+                                    <span>Instructor Name: @Model.Course.InstructorName</span>
+                                    <input type="hidden" name="InstructorName" value="@Model.Course.InstructorName" />
+                                </div>
+
+                                <!-- Foreach loop for course videos -->
+                                @foreach (var video in Model.AddSubCourse)
+                                {
+                                    <p class="text-truncate mb-4 mb-md-0">
+                                        Sub Course: @video.Subcourse
+                                        <input type="hidden" name="SubCourse" value="@video.Subcourse" />
+                                    </p>
+                                    <p class="text-truncate mb-4 mb-md-0">
+                                        Video Title: @video.VideoTitle
+                                        <input type="hidden" name="VideoTitle" value="@video.VideoTitle" />
+                                    </p>
+                                    <input type="hidden" name="VideoUrl" value="@video.VideoUrl" />
+                                }
+                            </div>
+
+                            <div class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
+                                <div class="d-flex flex-row align-items-center mb-1">
+                                    <h4 class="mb-1 me-1">Price</h4>
+                                    <span class="text-danger">₹ @Model.Course.Price</span>
+                                    <input type="hidden" name="Price" value="@Model.Course.Price" />
+                                </div>
+                                <div class="d-flex flex-column mt-4">
+                                    <input type="submit" class="btn btn-warning" value="Add To Cart">
+                                    <button class="btn btn-outline-danger mt-2" type="button">Add to wishlist</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#addToCartForm').on('submit', function (e) {
+            e.preventDefault(); 
+
+            
+            var formData = $(this).serialize();
+
+           
+            $.ajax({
+                url: '@Url.Action("Cart", "Userdashboard")', 
+                type: 'POST',
+                data: formData,
+                ContainType :'Application/x-www form-urlencoded;charset=utf8',
+                success: function (response) {
+                   
+                    alert('Course added to cart successfully!');
+                },
+                error: function (xhr, status, error) {
+                  
+                    alert('An error occurred while adding to cart.');
+                }
+            });
+        });
+    });
+</script>

@@ -1,0 +1,73 @@
+﻿
+
+
+<section class="vh-100" style="background-color: #ff8a00; margin-top: 150px; padding-top: 50px; padding-bottom: 50px">
+    <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col">
+                <p class="mb-3">
+                    <span class="h2" style="color:Black">Course Cart </span>
+                    <span class="h4 text-muted" id="cartItemCount">0 items</span>
+                </p>
+
+                <!-- Replace the Repeater with a simple loop in your server-side code -->
+                <div id="cartItems">
+                    <!-- Sample item card, repeat this block for each item in the cart -->
+                    <div class="card mb-4">
+                        <div class="card-body p-4">
+                            <div class="row align-items-center">
+                                <div class="col-md-2">
+                                    <img src="course-image-url.jpg" class="img-fluid" alt="Course Image">
+                                </div>
+                                <div class="col-md-2 d-flex justify-content-center">
+                                    <div>
+                                        <p class="small text-muted mb-4 pb-2">Course</p>
+                                        <span class="lead fw-normal mb-0">Course Name</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 d-flex justify-content-center">
+                                    <div>
+                                        <p class="small text-muted mb-4 pb-2">Sub Course</p>
+                                        <span class="lead fw-normal mb-0">Sub Course Name</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 d-flex justify-content-center">
+                                    <div>
+                                        <p class="small text-muted mb-4 pb-2">Topic</p>
+                                        <span class="lead fw-normal mb-0">Topic Name</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 d-flex justify-content-center">
+                                    <div>
+                                        <p class="small text-muted mb-4 pb-2">Price</p>
+                                        <span class="lead fw-normal mb-0">₹Price</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 d-flex justify-content-center">
+                                    <button class="btn btn-outline-warning" onclick="removeFromCart(cartId)">Remove</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End of sample item card -->
+                </div>
+
+                <div class="card mb-5">
+                    <div class="card-body p-4">
+                        <div class="float-end">
+                            <p class="mb-0 me-5 d-flex align-items-center">
+                                <span class="small text-muted me-2">Order total:</span>
+                                <span class="lead fw-normal" id="orderTotal">₹Total Price</span>
+                            </p>
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <button class="btn btn-dark btn-lg me-2 mr-3" onclick="buyMore()">Buy More</button>
+                            <button class="btn btn-success btn-lg" onclick="payNow()">Pay Now</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
