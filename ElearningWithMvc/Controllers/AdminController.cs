@@ -2,6 +2,7 @@
 using ElearningWithMvc.Migrations;
 using ElearningWithMvc.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace ElearningWithMvc.Controllers
 {
@@ -59,5 +60,47 @@ namespace ElearningWithMvc.Controllers
 			return View(data);
 		}
 
-	}
+
+        public IActionResult ToggleStatus(int id)
+        {
+            var user = db.User.Find(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            user.Status = user.Status == "Active" ? "Block" : "Active";
+            db.User.Update(user);
+            db.SaveChanges();
+			TempData["ChangeSatus"] = "You have Successfully Change Status";
+            return RedirectToAction("UserList");
+        }
+
+
+
+        [HttpGet]
+        public JsonResult GetCourseNames()
+        {
+            var courseNames = db.AddCourses.Select(c => c.CourseName).ToList();
+            return Json(courseNames);
+        }
+
+  
+        public IActionResult AddSubCourse()
+        {
+            return View();
+        }
+
+
+		[HttpPost]
+		public IActionResult AddSubCourse(CourseVideo c)
+		{
+			db.AddSubCourse.Add(c);
+			db.SaveChanges();
+			TempData["SubCourseAdd"] = "You have SubCourse Added Successfully";
+			return RedirectToAction("AddSubCourse");
+
+		}
+
+    }
 }

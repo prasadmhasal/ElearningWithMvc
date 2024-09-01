@@ -3,7 +3,8 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
+    <title></title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <!-- Nucleo Icons -->
@@ -48,7 +49,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="../pages/billing.html">
+                    <a class="nav-link " asp-controller="Admin" asp-action="AddSubcourse">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         </div>
                         <i class="fa-solid fa-upload"></i>

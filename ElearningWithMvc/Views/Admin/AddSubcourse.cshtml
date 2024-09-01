@@ -1,0 +1,83 @@
+﻿@model CourseVideo
+
+
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<link href="~/admincontent/css/addcourse.css" rel="stylesheet" />
+
+<partial name="Notification"/>
+
+<div class="container-fluid py-4">
+    <div class="row">
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="form1">
+                <div class="registration-form">
+                    <form method="post">
+                        <div class="form-icon">
+                            <span>
+                                <i class="fa-solid fa-upload"></i>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label for="Coursename">Select Main Course</label>
+                            <select class="form-select item" asp-for="Coursename" id="Coursename" aria-label="Default select example">
+                                <option selected disabled>Select Main Course</option>
+                                <!-- Options will be populated by AJAX -->
+                            </select>
+                        </div>
+
+                        <div class="form-group ">
+                            <label for="SubCourse">SubCourse</label>
+                            <input type="text" class="form-control item " asp-for="Subcourse"  placeholder="Topic">
+                        </div>
+                        <div class="form-group">
+                            <label for="Video Title">Video Title</label>
+                            <input type="text" class="form-control item " asp-for="VideoTitle"  placeholder="Topic">
+                        </div>
+                        <div class="form-group">
+                            <label for="Url">Url</label>
+                            <input type="text" class="form-control item" asp-for="VideoUrl"  placeholder="URL">
+                        </div>
+                     
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-block create-account">Upload</button>
+                        </div>
+                    </form>
+
+                </div>
+                
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+            url: '@Url.Action("GetCourseNames", "Admin")', // Adjust the URL based on your route
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                var dropdown = $('#Coursename');
+                dropdown.empty();
+                dropdown.append('<option selected="true" disabled>Select Main Course</option>');
+
+                $.each(data, function (key, entry) {
+                    dropdown.append($('<option></option>').attr('value', entry).text(entry));
+                });
+            },
+            error: function (ex) {
+                alert('Failed to retrieve course names: ' + ex);
+            }
+        });
+    });
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>

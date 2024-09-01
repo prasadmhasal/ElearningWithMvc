@@ -1,13 +1,5 @@
-﻿ 
-@* <link rel="stylesheet" type="text/css" href="/Content/mysitecss/bootstrap4/bootstrap.min.css">
-<link href="/Content/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="/Content/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-<link rel="stylesheet" type="text/css" href="/Content/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-<link rel="stylesheet" type="text/css" href="/Content/plugins/OwlCarousel2-2.2.1/animate.css">
-<link href="/Content/plugins/video-js/video-js.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="/Content/mysitecss/main_styles.css">
-<link rel="stylesheet" type="text/css" href="/Content/mysitecss/responsive.css"> *@
-
+﻿@using ElearningWithMvc.Migrations
+@model List<AddCourse>
 
 <style>
 	.video_container {
@@ -65,6 +57,7 @@
 				<div class="home_slider_background" style="background-image:url(/Content/Images/index.jpg)"></div>
 				<div class="home_container">
 					<div class="container">
+						
 						<div class="row">
 							<div class="col">
 								<div class="home_content text-center">
@@ -115,57 +108,62 @@
 
 
 <!-- Courses -->
-<h2 style="text-align:center;margin-top:40px;font-weight:bold">Latest Videos</h2>
-<div class="container py-5">
-	<div class="row justify-content-center mb-3">
-		<div class="col-md-12 col-xl-10">
-			<div class="card shadow-0 border rounded-3">
-				<div class="card-body">
-					<div class="row">
-						<div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
-							<div class="bg-image hover-zoom ripple rounded ripple-surface">
-								<img src="/Content/Images/course_6.jpg" class="w-100" />
-								<a href="your-video-url.html">
-									<div class="hover-overlay">
-										<div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
-									</div>
-								</a>
-							</div>
-						</div>
-						<div class="col-md-6 col-lg-6 col-xl-6">
-							<h5>Course Name</h5>
-							<div class="mt-1 mb-0 text-muted small">
-								<span>Subcourse Name</span>
-							</div>
-							<div class="mb-2 text-muted small">
-								<span>Topic Name</span>
-							</div>
-							<p class="text-truncate mb-4 mb-md-0">
-								E-learning courses offer flexible, accessible education <br />through online platforms, covering a wide range of subjects.
-							</p>
-						</div>
-						<div class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
-							<div class="d-flex flex-row align-items-center mb-1">
-								<h4 class="mb-1 me-1">₹Price</h4>
-								<span class="text-danger"><s>₹20.99</s></span>
-							</div>
-							<h6 class="text-success">Special Offer</h6>
-							<div class="d-flex flex-column mt-4">
-								<a href="details-page.html" class="btn btn-warning">Details</a>
-								<button class="btn btn-outline-danger mt-2" type="button">Add to wishlist</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Repeat the above block for each video -->
-</div>
+<div class="container mt-5">
+        <h2 style="text-align:center;margin-top:40px;font-weight:bold">Latest Courses and Videos</h2>
+        <div class="row justify-content-center mb-3">
+            <div class="col-md-12 col-xl-10">
+			@foreach (var item in Model)
+                {
+                    <div class="card shadow-0 border rounded-3 mb-4">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-12 col-lg-3 col-xl-3 mb-4 mb-lg-0">
+                                    <div class="bg-image hover-zoom ripple rounded ripple-surface">
+									<img src="@item.CourseImage" class="w-100" />
+                                        <a href="your-url.html">
+                                            <div class="hover-overlay">
+                                                <div class="mask" style="background-color: rgba(253, 253, 253, 0.15);"></div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-6 col-xl-6">
+								<h5>@item.CourseName</h5>
+                                    <div class="mt-1 mb-0 text-muted small">
+									<span>@item.InstructorName</span>
+                                    </div>
+                                    <p class="text-truncate mb-4 mb-md-0">
+									@item.Descripation<br />
+                                    </p>
+                                </div>
+                                
+                                    <div class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
+                                        <div class="d-flex flex-row align-items-center mb-1">
+                                            <h4 class="mb-1 me-1">Price</h4>
+                                            <span class="text-danger">₹ @item.Price</span>
+                                        </div>
+                                        <h6 class="text-success">Special Offer</h6>
+                                        <div class="d-flex flex-column mt-4">
+                                            <a asp-controller="Userdashboard" asp-action="Details" class="btn btn-warning">Details</a>
+                                            <button class="btn btn-outline-danger mt-2" type="button">Add to wishlist</button>
+                                        </div>
+                                    </div>
+                              
+                                   
+                                
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
 
-<div class="button home_button" style="margin-left:550px;margin-bottom:50px">
-	<a href="allCourses.aspx">see all courses<div class="button_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></div></a>
-</div>
+        <div class="button home_button" style="margin-left:550px;margin-bottom:50px">
+            <a asp-controller="Userdashboard" asp-action="AllCourse">See All Courses
+                <div class="button_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+            </a>
+        </div>
+    </div>
 
 
 

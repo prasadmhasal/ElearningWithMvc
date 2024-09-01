@@ -10,5 +10,6 @@ namespace ElearningWithMvc.Context
 
         public DbSet<Auth> User { get; set; }
         public DbSet<AddCourse> AddCourses { get; set; }
+        public DbSet<CourseVideo> AddSubCourse { get; set; }
     }
 }

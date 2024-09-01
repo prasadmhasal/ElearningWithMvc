@@ -42,6 +42,7 @@ namespace ElearningWithMvc.Controllers
         {
             a.Urole = "User";
             a.Password = EncryptPassword(a.Password);
+            a.Status = "Active";
             db.User.Add(a);
             db.SaveChanges();
             TempData["SignIn"] = "You Have Successfully SignIn ";
@@ -69,32 +70,45 @@ namespace ElearningWithMvc.Controllers
 		}
 
         [HttpPost]
-		public IActionResult SignUp(SignUpViewModel s)
+        public IActionResult SignUp(SignUpViewModel s)
         {
-            var data = db.User.Where(x => x.Email.Equals(s.Email)).SingleOrDefault();
+            var data = db.User.Where(x => x.Email == s.Email).SingleOrDefault();
+
             if (data != null)
             {
-                bool us = data.Email.Equals(s.Email) && DecrptPassword(data.Password).Equals(s.Password);
-                if(us)
+                bool isPasswordCorrect = DecrptPassword(data.Password).Equals(s.Password);
+                if (isPasswordCorrect && data.Status.Equals("Active"))
                 {
-                    HttpContext.Session.SetString("Email", data.Email);
-                    HttpContext.Session.SetString("Username", data.Username);
-                    TempData["Login"] = "login sucessfully";
-                    return RedirectToAction("Index", "Userdashboard");
+                    if (data.Urole.Equals("User"))
+                    {
+                        HttpContext.Session.SetString("Email", data.Email);
+                        HttpContext.Session.SetString("Username", data.Username);
+                        TempData["Login"] = "Login successfully";
+                        return RedirectToAction("Index", "Userdashboard");
+                    }
+                    else if (data.Urole.Equals("Admin"))
+                    {
+                        TempData["Login"] = "Login successfully";
+                        return RedirectToAction("Index", "Admin");
+                    }
                 }
-                else
+                else if (!isPasswordCorrect)
                 {
-                    TempData["Email"] = "Invalid EmailId";
-                } 
+                    TempData["Pass"] = "Invalid Password";
+                }
+                else if (!data.Status.Equals("Active"))
+                {
+                    TempData["Status"] = "Account is not active";
+                }
             }
             else
             {
-                TempData["Pass"] = "Invalid Password";
-
+                TempData["Email"] = "Invalid EmailId";
             }
-            return View();
 
+            return View();
         }
-        
+
+
     }
 }

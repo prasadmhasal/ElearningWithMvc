@@ -14,5 +14,7 @@ namespace ElearningWithMvc.Models
         public string Email { get; set; }
 
         public string Urole { get; set; }
+
+        public string Status { get; set; }
     }
 }

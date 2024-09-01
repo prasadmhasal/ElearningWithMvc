@@ -1,12 +1,24 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ElearningWithMvc.Context;
+using ElearningWithMvc.Migrations;
+using ElearningWithMvc.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using static ElearningWithMvc.Models.AllCourse;
 
 namespace ElearningWithMvc.Controllers
 {
 	public class UserdashboardController : Controller
 	{
+		private readonly ApplicationDbContext db;
+		public UserdashboardController(ApplicationDbContext db) 
+		{
+			this.db = db;
+		}
+
 		public IActionResult Index()
 		{
-			return View();
+			var topCourses = db.AddCourses.OrderBy(c => c.CourseId).Take(5).ToList();
+			return View(topCourses);
 		}
 
 		public IActionResult Userhome()
@@ -25,6 +37,11 @@ namespace ElearningWithMvc.Controllers
 		}
 
 		public IActionResult Cart()
+		{
+			return View();
+		}
+
+		public IActionResult Details()
 		{
 			return View();
 		}
