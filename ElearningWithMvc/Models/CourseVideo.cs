@@ -15,6 +15,6 @@ namespace ElearningWithMvc.Models
 
         public string VideoUrl { get; set; }
 
-
+        public int CourseId { get; set; }
     }
 }

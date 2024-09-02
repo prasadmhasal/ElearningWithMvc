@@ -39,83 +39,82 @@ namespace ElearningWithMvc.Controllers
 			return View();
 		}
 
+       
+        
 
-        //public IActionResult AddToCart()
+
+       
+
+        //[HttpPost]
+        //public IActionResult Cart(int[] id , AddToCart a)
         //{
-        //    return View();
-        //}
-
-        [HttpPost]
-        public IActionResult Cart(AddToCart model, List<string> SubCourse, List<string> VideoTitle, List<string> VideoUrl)
-        {
-            if (ModelState.IsValid)
-            {
-               var user = HttpContext.Session.GetString("Username");
+            
+        //       var user = HttpContext.Session.GetString("Username");
                
-                for (int i = 0; i < SubCourse.Count; i++)
-                {
-                    var cartItem = new AddToCart
-                    {
-                        CourseId = model.CourseId,
-                        CourseName = model.CourseName,
-                        InstructorName = model.InstructorName,
-                        CourseImage = model.CourseImage,
-                        Price = model.Price,
-                        Suser = user,
-                        SubCourse = SubCourse[i],
-                        VideoTitle = VideoTitle[i],
-                        VideoUrl = VideoUrl[i], 
-                        Quantity = model.Quantity 
-                    };
+        //        foreach (var b in id)
+        //        {
+        //            var cartItem = new AddToCart
+        //            {
+        //                CourseId = id,
+        //                CourseName = id.CourseName,
+        //                InstructorName = model.InstructorName,
+        //                CourseImage = model.CourseImage,
+        //                Price = model.Price,
+        //                Suser = user,
+        //                SubCourse = SubCourse[i],
+        //                VideoTitle = VideoTitle[i],
+        //                VideoUrl = VideoUrl[i], 
+        //                Quantity = model.Quantity 
+        //            };
 
-                    db.AddToCart.Add(cartItem);
-                }
+        //            db.AddToCart.Add(cartItem);
+        //        }
 
-                db.SaveChanges();
+        //        db.SaveChanges();
 
                 
-                //return RedirectToAction("Cart");
-            }
+               
 
          
-            return View(model);
-        }
+        //    return View(model);
+        //}
 
 
-        public IActionResult Details(int id)
-		{
-            var course = db.AddCourses.Find(id);
-            if (course == null)
-            {
-                return NotFound();
-            }
+  //      public IActionResult Details(int id)
+		//{
+  //          var course = db.AddCourses.Find(id);
+  //          if (course == null)
+  //          {
+  //              return NotFound();
+  //          }
 
-            var courseVideos = db.AddSubCourse.Where(v => v.Coursename == course.CourseName).ToList();
+  //          var courseVideos = db.AddSubCourse.Where(v => v.Coursename == course.CourseName).ToList();
 
-            var viewModel = new AllCourse
-            {
-                Course = course,
-                AddSubCourse = courseVideos
-            };
+  //          var viewModel = new AllCourse
+  //          {
+  //              Course = course,
+  //              AddSubCourse = courseVideos
+  //          };
 
-            return View(viewModel);
-        }
+  //          return View(viewModel);
+  //      }
 
 		
 
-		public IActionResult SubCourseList(string CourseName)
+		public IActionResult SubCourseList(int id)
 		{
-            var courses = db.AddCourses.Where(x=>x.CourseName == CourseName).ToList();
+            var courses = db.AddCourses.Where(x=>x.CourseId == id);
             if (courses == null || !courses.Any())
             {
                 return NotFound();
             }
-
-            var courseVideos = db.AddSubCourse.Where(v => v.Coursename == CourseName).ToList();
+            var coursename=courses.First().CourseName;
+            //var course = db.AddCourses.Find
+            var courseVideos = db.AddSubCourse.Where(v => v.Coursename == coursename).ToList();
 
             var viewModel = new AllCourse
             {
-                Course = courses.FirstOrDefault(),
+                Course = courses.ToList(),
                 AddSubCourse = courseVideos
             };
 

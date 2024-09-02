@@ -23,8 +23,8 @@
                         </div>
                         <div class="form-group">
                             <label for="Coursename">Select Main Course</label>
-                            <select class="form-select item" asp-for="Coursename" id="Coursename" aria-label="Default select example">
-                                <option selected disabled>Select Main Course</option>
+                            <select class="form-select item" asp-for="CourseId" id="Coursename" aria-label="Default select example">
+                                
                                 <!-- Options will be populated by AJAX -->
                             </select>
                         </div>
@@ -59,23 +59,23 @@
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $.ajax({
-            url: '@Url.Action("GetCourseNames", "Admin")', // Adjust the URL based on your route
-            type: 'GET',
-            dataType: 'json',
-            success: function (data) {
-                var dropdown = $('#Coursename');
-                dropdown.empty();
-                dropdown.append('<option selected="true" disabled>Select Main Course</option>');
+        
+    });
+    $.ajax({
+        url: '/Admin/CourseNames', // Adjust the URL based on your route
+        type: 'GET',
+        dataType: 'json',
+        success: function (result, staus, xhr) {
+            var optons = '<option value="">Select CourseName</option>';
 
-                $.each(data, function (key, entry) {
-                    dropdown.append($('<option></option>').attr('value', entry).text(entry));
-                });
-            },
-            error: function (ex) {
-                alert('Failed to retrieve course names: ' + ex);
-            }
-        });
+            $.each(result, function (index, entry) {
+                options += "<option value='" + entry.courseId + " ' name='CourseId' >" + entry.courseName + "</options>";
+            });
+            $('#Coursename').html(options);
+        },
+        error: function (ex) {
+            alert('Failed to retrieve course names: ' + ex);
+        }
     });
 </script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

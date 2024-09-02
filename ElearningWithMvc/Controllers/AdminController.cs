@@ -79,9 +79,10 @@ namespace ElearningWithMvc.Controllers
 
 
         [HttpGet]
-        public JsonResult GetCourseNames()
+        public IActionResult CourseNames()
         {
-            var courseNames = db.AddCourses.Select(c => c.CourseName).ToList();
+            var courseNames = db.AddCourses.FromSqlRaw($" exec FetchCoursesAll").ToList();
+			 
             return Json(courseNames);
         }
 

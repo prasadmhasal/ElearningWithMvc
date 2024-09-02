@@ -8,6 +8,7 @@ namespace ElearningWithMvc.Models
 		public int CourseId { get; set; }
 
 		public string CourseName {  get; set; }
+		public string Subcoursename {  get; set; }
 
 		public string InstructorName {  get; set; }
 
@@ -20,6 +21,7 @@ namespace ElearningWithMvc.Models
 		public string Day { get; set; }
 
 		public string Level { get; set; }
+		
 
 	}
 }

@@ -14,12 +14,12 @@ namespace ElearningWithMvc.Models
         public double Price { get; set; }
 
         
-        public string SubCourse { get; set; }
-        public string VideoTitle { get; set; }
-        public string VideoUrl { get; set; }
+        public string? SubCourse { get; set; }
+        public string? VideoTitle { get; set; }
+        public string? VideoUrl { get; set; }
 
         public string Suser { get; set; }
         
-        public int Quantity { get; set; } = 1; 
+        public int? Quantity { get; set; } = 1; 
     }
 }
