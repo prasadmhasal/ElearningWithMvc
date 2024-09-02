@@ -1,0 +1,65 @@
+﻿@model SubcourseVideo
+
+
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+<link href="~/admincontent/css/addcourse.css" rel="stylesheet" />
+
+<partial name="Notification" />
+
+<div class="container-fluid py-4">
+    <div class="row">
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="form1">
+                <div class="registration-form">
+                    <form method="post">
+                        <div class="form-icon">
+                            <span>
+                                <i class="fa-solid fa-upload"></i>
+                            </span>
+                        </div>
+                        <div class="form-group">
+                            <label for="Coursename">Select Main Course</label>
+                            <select class="form-select item"  id="Coursename" aria-label="Default select example">
+
+                                <!-- Options will be populated by AJAX -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="Coursename">Select SubCourse</label>
+                            <select class="form-select item" asp-for="SubCourseId" id="SubCourseId" aria-label="Default select example">
+
+                                <!-- Options will be populated by AJAX -->
+                            </select>
+                        </div>
+                        <div class="form-group ">
+                            <label for="SubCourse">Title</label>
+                            <input type="text" class="form-control item " asp-for="Title" placeholder="Topic">
+                        </div>
+                        <div class="form-group">
+                            <label for="Video Title">Url</label>
+                            <input type="text" class="form-control item " asp-for="Url" placeholder="Topic">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-block create-account">Upload</button>
+                        </div>
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/ajax.js"></script>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>

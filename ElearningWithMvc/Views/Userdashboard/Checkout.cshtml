@@ -1,0 +1,41 @@
+﻿
+
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkout</title>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+<body>
+    <h1>Checkout</h1>
+    <script type="text/javascript">
+        var options = {
+            "key": "@ViewBag.Key", // Enter the Key ID generated from the Dashboard
+            "amount": @ViewBag.totalprice + "00", // Amount in paise
+            "currency": "INR",
+            "name": "Your Company Name",
+            "description": "Order Payment",
+            "order_id": "@ViewBag.razorpayOrder", // Order ID created in the server
+            "handler": function (response) {
+                // Handle the payment response
+                console.log(response);
+                window.location.href = '/Userdashboard/Successpayment';
+            },
+            "prefill": {
+                "name": "",
+                "email": "",
+                "contact": ""
+            },
+            "theme": {
+                "color": "#3399cc"
+            }
+        };
+        var rzp1 = new Razorpay(options);
+        rzp1.open();
+    </script>
+</body>
+</html>

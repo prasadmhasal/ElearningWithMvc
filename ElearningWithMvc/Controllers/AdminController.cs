@@ -34,12 +34,8 @@ namespace ElearningWithMvc.Controllers
 			UploadFile(a.CourseImage, fullpath);
 			AddCourse obj = new AddCourse()
 			{
-				CourseName = a.CourseName,
-				InstructorName = a.InstructorName,
-				Descripation = a.Descripation,
-				Price = a.Price,
-				Day = a.Day,
-				Level = a.Level,
+				CourseName = a.CourseName,	
+                InstructorName = a.InstructorName,
 				CourseImage = filepath
 			};
 			db.AddCourses.Add(obj);
@@ -79,6 +75,7 @@ namespace ElearningWithMvc.Controllers
 
 
         [HttpGet]
+
         public IActionResult CourseNames()
         {
             var courseNames = db.AddCourses.FromSqlRaw($" exec FetchCoursesAll").ToList();
@@ -86,7 +83,27 @@ namespace ElearningWithMvc.Controllers
             return Json(courseNames);
         }
 
-  
+		[HttpGet]
+
+		public IActionResult GetSubCourse(int data)
+		{
+			var ab = db.AddSubCourse.Where(x => x.CourseId == data).ToList();
+			return Json(ab);
+
+		}
+
+		public IActionResult UploadVideos()
+		{
+			return View();
+		}
+		[HttpPost]
+        public IActionResult UploadVideos(SubcourseVideo s)
+        {
+			db.SubcourseVideo.Add(s);
+			db.SaveChanges();
+            return View();
+        }
+
         public IActionResult AddSubCourse()
         {
             return View();

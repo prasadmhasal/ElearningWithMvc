@@ -25,16 +25,16 @@
                                 <div class="mt-1 mb-0 text-muted small">
                                     <span>@item.InstructorName</span>
                                 </div>
-                                <p class="text-truncate mb-4 mb-md-0">
+                               @*  <p class="text-truncate mb-4 mb-md-0">
                                     @item.Descripation<br />
-                                </p>
+                                </p> *@
                             </div>
 
                             <div class="col-md-6 col-lg-3 col-xl-3 border-sm-start-none border-start">
-                                <div class="d-flex flex-row align-items-center mb-1">
+                                @* <div class="d-flex flex-row align-items-center mb-1">
                                     <h4 class="mb-1 me-1">Price</h4>
                                     <span class="text-danger">₹ @item.Price</span>
-                                </div>
+                                </div> *@
                                 <h6 class="text-success">Special Offer</h6>
                                 <div class="d-flex flex-column mt-4">
                                     <a asp-controller="Userdashboard" asp-action="SubCourseList"  asp-route-id="@item.CourseId" class="btn btn-warning">Course List</a>

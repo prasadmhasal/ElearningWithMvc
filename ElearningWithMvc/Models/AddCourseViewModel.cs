@@ -9,7 +9,9 @@ namespace ElearningWithMvc.Models
 
 		public string CourseName { get; set; }
 
-		public string InstructorName { get; set; }
+        public string Subcoursename { get; set; }
+
+        public string InstructorName { get; set; }
 
 		public IFormFile? CourseImage { get; set; }
 

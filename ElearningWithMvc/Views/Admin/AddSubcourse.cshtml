@@ -34,13 +34,18 @@
                             <input type="text" class="form-control item " asp-for="Subcourse"  placeholder="Topic">
                         </div>
                         <div class="form-group">
-                            <label for="Video Title">Video Title</label>
-                            <input type="text" class="form-control item " asp-for="VideoTitle"  placeholder="Topic">
+                            <label for="Video Title">Description</label>
+                            <input type="text" class="form-control item " asp-for="Description"  placeholder="Topic">
                         </div>
                         <div class="form-group">
-                            <label for="Url">Url</label>
-                            <input type="text" class="form-control item" asp-for="VideoUrl"  placeholder="URL">
+                            <label for="Url">Price</label>
+                            <input type="text" class="form-control item" asp-for="price" placeholder="Price">
                         </div>
+                        <div class="form-group">
+                            <label for="Url">Level</label>
+                            <input type="text" class="form-control item" asp-for="Level"  placeholder="Level">
+                        </div>
+                      
                      
                         <div class="form-group">
                             <button type="submit" class="btn btn-block create-account">Upload</button>
@@ -77,6 +82,28 @@
             alert('Failed to retrieve course names: ' + ex);
         }
     });
+    
+    // $('#Coursename').change(function(){
+    // $.ajax({
+    //     url: '/Admin/CourseNames', // Adjust the URL based on your route
+    //     type: 'GET',
+    //     dataType: 'json',
+    //     success: function (result, staus, xhr) {
+    //         var optons = '<option value="">Select CourseName</option>';
+
+    //         $.each(result, function (index, entry) {
+    //             options += "<option value='" + entry.courseId + " ' name='CourseId' >" + entry.courseName + "</options>";
+    //         });
+    //         $('#Coursename').html(options);
+    //     },
+    //     error: function (ex) {
+    //         alert('Failed to retrieve course names: ' + ex);
+    //     }
+    // });
+    // })
+
+
+
 </script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
