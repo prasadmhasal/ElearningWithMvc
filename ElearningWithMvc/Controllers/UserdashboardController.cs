@@ -59,7 +59,7 @@ namespace ElearningWithMvc.Controllers
         {
             var data = db.SubcourseVideo.FromSqlRaw($"exec fatchvideo {id}").ToList();
             return View(data); 
-        }  
+        }
 
 
 
@@ -98,26 +98,26 @@ namespace ElearningWithMvc.Controllers
         //}
 
 
-        //      public IActionResult Details(int id)
-        //{
-        //          var course = db.AddCourses.Find(id);
-        //          if (course == null)
-        //          {
-        //              return NotFound();
-        //          }
+        public IActionResult Details(int id)
+        {
+            var course = db.AddCourses.Where(x=>x.CourseId == id).ToList();
+            if (course == null)
+            {
+                return NotFound();
+            }
+            var coursename = course.First().CourseId;
+            var courseVideos = db.AddSubCourse.Where(v => v.CourseId == coursename).ToList();
 
-        //          var courseVideos = db.AddSubCourse.Where(v => v.Coursename == course.CourseName).ToList();
+            var viewModel = new AllCourse
+            {
+                Course = course.ToList(),
+                AddSubCourse = courseVideos
+            };
 
-        //          var viewModel = new AllCourse
-        //          {
-        //              Course = course,
-        //              AddSubCourse = courseVideos
-        //          };
+            return View(viewModel);
+        }
 
-        //          return View(viewModel);
-        //      }
 
-     
         public IActionResult ByNow(int id)
         {
             var data = db.AddSubCourse.Find(id);

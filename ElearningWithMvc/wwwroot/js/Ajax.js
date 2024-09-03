@@ -68,13 +68,13 @@ $('#bynow').click(function () {
 $(document).ready(function () { });
 
     $.ajax({
-        url: '/Userdashboard/MYcourse',
+        url: '/Userdashboard/MyCourse',
         type: 'Get',
-        data: formData,
+        data: 'json',
         ContainType: 'Application/x-www form-urlencoded;charset=utf8',
         success: function (response) {
 
-            alert('Course added to cart successfully!');
+          /*  alert('Course added to cart successfully!');*/
         },
         error: function (xhr, status, error) {
 
@@ -84,20 +84,39 @@ $(document).ready(function () { });
 });
 
 
+$(document).ready(function () {
+   
+    $('#MyVideo').click(function () {
+        
+        var videoUrl = $(this).siblings('#url').val();
 
-$('#MyVideo').click(function(){
-    var selectedVideoId = $('#url').val();
-    if(selectedVideoId) {
-        var videoPanel = $('#playvideo');
-        var embedUrl = 'https://www.youtube.com/embed/' + selectedVideoId;
-        videoPanel.src = embedUrl
-        videoPanel.show();
+        
+        if (videoUrl) {
+           
+            var videoId = videoUrl.split('v=')[1];
+            var ampersandPosition = videoId.indexOf('&');
+            if (ampersandPosition != -1) {
+                videoId = videoId.substring(0, ampersandPosition);
+            }
 
-    } else {
-        Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'Please select a subcourse to play the video!'
-        });
-    }
+           
+            var embedUrl = 'https://www.youtube.com/embed/' + videoId;
+
+           
+            $('#playvideo').attr('src', embedUrl);
+
+            
+            $('#videoContainer').show();
+            $('#noVideosMessage').hide();
+        } else {
+       
+            $('#playvideo').attr('src', '');
+            $('#videoContainer').hide();
+            $('#noVideosMessage').show();
+        }
+    });
+
+    
+    $('#videoContainer').hide();
+    $('#noVideosMessage').show();
 });
