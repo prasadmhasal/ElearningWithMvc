@@ -55,6 +55,11 @@ namespace ElearningWithMvc.Controllers
            return View(data);
         }
 
+        public IActionResult WatchVideo(int id)
+        {
+            var data = db.SubcourseVideo.FromSqlRaw($"exec fatchvideo {id}").ToList();
+            return View(data); 
+        }  
 
 
 

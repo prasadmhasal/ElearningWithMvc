@@ -82,3 +82,22 @@ $(document).ready(function () { });
         }
   
 });
+
+
+
+$('#MyVideo').click(function(){
+    var selectedVideoId = $('#url').val();
+    if(selectedVideoId) {
+        var videoPanel = $('#playvideo');
+        var embedUrl = 'https://www.youtube.com/embed/' + selectedVideoId;
+        videoPanel.src = embedUrl
+        videoPanel.show();
+
+    } else {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Please select a subcourse to play the video!'
+        });
+    }
+});
