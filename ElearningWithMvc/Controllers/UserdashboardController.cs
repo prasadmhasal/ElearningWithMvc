@@ -45,7 +45,19 @@ namespace ElearningWithMvc.Controllers
 		}
 
 
+       
 
+        public IActionResult MyCourse()
+        {
+           var email = HttpContext.Session.GetString("Email");
+           var data =  db.AddSubCourse.FromSqlRaw($"exec fetchmycourse '{email}'").ToList();
+            foreach (var course in data) 
+            { 
+
+            
+            }
+           return View(data);
+        }
 
 
 

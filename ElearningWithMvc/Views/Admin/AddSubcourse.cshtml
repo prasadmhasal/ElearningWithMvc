@@ -1,4 +1,4 @@
-﻿@model CourseVideo
+﻿@model AddSubcourseViewModel
 
 
 @{
@@ -38,6 +38,11 @@
                             <input type="text" class="form-control item " asp-for="Description"  placeholder="Topic">
                         </div>
                         <div class="form-group">
+                            <label asp-for="SubCourseImage" class="control-label"></label>
+                            <input type="file" asp-for="SubCourseImage" class="form-control item" />
+                            <span asp-validation-for="SubCourseImage" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
                             <label for="Url">Price</label>
                             <input type="text" class="form-control item" asp-for="price" placeholder="Price">
                         </div>
@@ -45,8 +50,6 @@
                             <label for="Url">Level</label>
                             <input type="text" class="form-control item" asp-for="Level"  placeholder="Level">
                         </div>
-                      
-                     
                         <div class="form-group">
                             <button type="submit" class="btn btn-block create-account">Upload</button>
                         </div>

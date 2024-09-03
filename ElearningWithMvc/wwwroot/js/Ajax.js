@@ -62,3 +62,23 @@ $('#bynow').click(function () {
         }
     });
 });
+
+
+
+$(document).ready(function () { });
+
+    $.ajax({
+        url: '/Userdashboard/MYcourse',
+        type: 'Get',
+        data: formData,
+        ContainType: 'Application/x-www form-urlencoded;charset=utf8',
+        success: function (response) {
+
+            alert('Course added to cart successfully!');
+        },
+        error: function (xhr, status, error) {
+
+            alert('An error occurred while adding to cart.');
+        }
+  
+});

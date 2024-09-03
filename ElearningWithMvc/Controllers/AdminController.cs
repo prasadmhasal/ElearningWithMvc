@@ -29,7 +29,7 @@ namespace ElearningWithMvc.Controllers
 		public IActionResult AddCourse(AddCourseViewModel a)
 		{
 			var path = env.WebRootPath;
-			var filepath = "/Content/Images" + a.CourseImage.FileName;
+			var filepath = "/Content/Images/" + a.CourseImage.FileName;
 			var fullpath = Path.Combine(path+filepath);
 			UploadFile(a.CourseImage, fullpath);
 			AddCourse obj = new AddCourse()
@@ -111,14 +111,28 @@ namespace ElearningWithMvc.Controllers
 
 
 		[HttpPost]
-		public IActionResult AddSubCourse(CourseVideo c)
+		public IActionResult AddSubCourse(AddSubcourseViewModel c)
 		{
-			db.AddSubCourse.Add(c);
+
+			var path = env.WebRootPath;
+			var filepath = "/Content/Images/" + c.SubCourseImage.FileName;
+			var fullpath = Path.Combine(path + filepath);
+			UploadFile(c.SubCourseImage, fullpath);
+            CourseVideo obj = new CourseVideo()
+			{
+                Subcourse = c.Subcourse,
+				Description = c.Description,
+				price = c.price,
+				Level = c.Level,
+				SubCourseImage = fullpath
+
+			};
+			db.AddSubCourse.Add(obj);
 			db.SaveChanges();
 			TempData["SubCourseAdd"] = "You have SubCourse Added Successfully";
 			return RedirectToAction("AddSubCourse");
 
 		}
 
-    }
+	}
 }
