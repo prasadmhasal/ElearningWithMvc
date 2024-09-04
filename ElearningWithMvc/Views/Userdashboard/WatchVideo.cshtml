@@ -1,24 +1,6 @@
 ﻿@model List<SubcourseVideo>
 
-
-<style>
-    .container-fluid {
-        margin-top: 180px;
-    }
-
-    .course-list {
-        height: 100vh;
-        overflow-y: auto;
-    }
-
-    .course-item {
-        margin-bottom: 20px;
-    }
-
-    .course-details {
-        height: 100vh;
-    }
-</style>
+<link href="~/css/site.css" rel="stylesheet" />
 <div class="container-fluid" style="margin-top: 50px;">
     <div class="row">
         <!-- Video Title List -->
@@ -56,8 +38,90 @@
     </div>
 </div>
 
+<!-- Tabs navs -->
+<ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
+    <li class="nav-item" role="presentation">
+        <a class="nav-link active"
+           id="ex1-tab-1"
+           data-bs-toggle="tab"
+           href="#ex1-tabs-1"
+           role="tab"
+           aria-controls="ex1-tabs-1"
+           aria-selected="true">Course Feedback</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link"
+           id="ex1-tab-2"
+           data-bs-toggle="tab"
+           href="#ex1-tabs-2"
+           role="tab"
+           aria-controls="ex1-tabs-2"
+           aria-selected="false">Tab 2</a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link"
+           id="ex1-tab-3"
+           data-bs-toggle="tab"
+           href="#ex1-tabs-3"
+           role="tab"
+           aria-controls="ex1-tabs-3"
+           aria-selected="false">Tab 3</a>
+    </li>
+</ul>
+<!-- Tabs navs -->
+<!-- Tabs content -->
+<div class="tab-content" id="ex1-content">
+    <div class="tab-pane fade show active"
+         id="ex1-tabs-1"
+         role="tabpanel"
+         aria-labelledby="ex1-tab-1">
+
+
+        <main class="cd__main">
+            <!-- Start DEMO HTML (Use the following code into your project)-->
+            <div class="wrapper">
+                <div class="title">Rate your experience</div>
+                <div class="content">We highly value your feedback! Kindly take a moment to rate your experience and provide us with your valuable feedback.</div>
+                <div class="rate-box">
+                    <input type="radio" name="star" id="star0" />
+                    <label class="star" for="star0"></label>
+                    <input type="radio" name="star" id="star1" />
+                    <label class="star" for="star1"></label>
+                    <input type="radio" name="star" id="star2" checked="checked" />
+                    <label class="star" for="star2"></label>
+                    <input type="radio" name="star" id="star3" />
+                    <label class="star" for="star3"></label>
+                    <input type="radio" name="star" id="star4" />
+                    <label class="star" for="star4"></label>
+                </div>
+                <textarea cols="30" rows="6" placeholder="Tell us about your experience!"></textarea>
+                <div class=" btn submit-btn">Send</div>
+            </div>
+            <!-- END EDMO HTML (Happy Coding!)-->
+        </main>
+       
+    </div>
+    <div class="tab-pane fade"
+         id="ex1-tabs-2"
+         role="tabpanel"
+         aria-labelledby="ex1-tab-2">
+        Tab 2 content
+    </div>
+    <div class="tab-pane fade"
+         id="ex1-tabs-3"
+         role="tabpanel"
+         aria-labelledby="ex1-tab-3">
+        Tab 3 content
+    </div>
+</div>
+<!-- Tabs content -->
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/js/site.js"></script>
+
+
+
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         function extractVideoId(url) {
