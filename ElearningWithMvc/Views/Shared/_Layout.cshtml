@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@inject IHttpContextAccessor HttpContextAccessor
+ 
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -65,15 +68,15 @@
 							</div>
 							<nav class="main_nav_contaner ml-auto">
 								<ul class="main_nav">
-									<li class="active"><a <a asp-controller="Userdashboard" asp-action="Index">Home</a></li>
+									<li class="active"> <a asp-controller="Userdashboard" asp-action="Index">Home</a></li>
 									<li><a asp-controller="Userdashboard" asp-action="AllCourse">All Courses</a></li>
 									<li><a asp-controller="Userdashboard" asp-action="MyCourse">My Course</a></li>
 									<li><a asp-controller="Userdashboard" asp-action="About">About Us</a></li>
-									<li><a asp-controller="Userdashboard" asp-action="Cart">Cart</a></li>
+									<li>Hello : @HttpContextAccessor.HttpContext.Session.GetString("Username") </li>
 
 								</ul>
 								
-								<input type="button" value="Logout" Class="btn btn-outline-dark btn-rounded ml-3" />
+								<a asp-controller="Auth" asp-action="Logout"><input type="button" value="Logout" Class="btn btn-outline-dark btn-rounded ml-3" /></a>
 								<!-- Hamburger -->
 
 								<div class="hamburger menu_mm">

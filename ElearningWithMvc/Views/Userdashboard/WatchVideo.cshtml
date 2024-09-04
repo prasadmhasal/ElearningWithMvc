@@ -19,40 +19,33 @@
         height: 100vh;
     }
 </style>
-<div class="container-fluid " style="margin-top:50px;">
+<<div class="container-fluid" style="margin-top: 50px;">
     <div class="row">
+        <!-- Video Title List -->
         <div class="col-md-3 course-list">
-            <h2 class="mb-4">Course List</h2>
-            <div>
+            <h2 class="mb-4">Video Titles</h2>
+            <ul class="list-group" id="videoList">
                 @if (Model.Any())
                 {
                     foreach (var course in Model)
                     {
-                        <div class="course-item">
-                            <div class="card bg-light mb-3" style="max-width: 18rem;">
-                                <div class="card-header">
-                                    <h5>@course.Title</h5>
-                                </div>
-                                <div class="card-body">
-                                    
-                                    <input type="hidden" id="url" value="@course.Url" />
-                            
-                                    <input type="button" id="MyVideo" class="btn btn-primary" value="Watch Video" />
-                                </div>
-                            </div>
-                        </div>
+                        <li class="list-group-item">
+                            <a href="#" class="video-title" data-url="@course.Url">@course.Title</a>
+                        </li>
                     }
                 }
                 else
                 {
-                    <p>No courses available.</p>
+                    <li class="list-group-item">No courses available.</li>
                 }
-            </div>
+            </ul>
         </div>
+
+        <!-- Video Details -->
         <div class="col-md-8 course-details">
             <div id="videoContainer">
-                <h3>Select a course to view details</h3>
-                <iframe width="560" height="315"
+                <h3>Select a video to view details</h3>
+                <iframe width="900" height="500"
                         id="playvideo"
                         frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowfullscreen>
@@ -62,6 +55,42 @@
         </div>
     </div>
 </div>
+
+
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/js/ajax.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        function extractVideoId(url) {
+            const urlParams = new URLSearchParams(new URL(url).search);
+            return urlParams.get('v');
+        }
+
+        function extractPlaylistId(url) {
+            const urlParams = new URLSearchParams(new URL(url).search);
+            return urlParams.get('list');
+        }
+
+        function loadVideo(videoId) {
+            const iframe = document.getElementById('playvideo');
+            iframe.src = `https://www.youtube.com/embed/${videoId}`;
+            document.getElementById('noVideosMessage').style.display = 'none';
+        }
+
+        // Event listener for video title clicks
+        document.getElementById('videoList').addEventListener('click', function (event) {
+            if (event.target.classList.contains('video-title')) {
+                event.preventDefault();
+                const videoUrl = event.target.getAttribute('data-url');
+                const videoId = extractVideoId(videoUrl);
+                if (videoId) {
+                    loadVideo(videoId);
+                } else {
+                    console.error('Video ID not found in the URL');
+                }
+            }
+        });
+    });
+
+
+</script>
 

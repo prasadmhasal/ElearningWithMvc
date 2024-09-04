@@ -98,25 +98,30 @@ namespace ElearningWithMvc.Controllers
         //}
 
 
+        //public IActionResult Details(int id)
+        //{
+        //    var course = db.AddCourses.Where(x=>x.CourseId == id).ToList();
+        //    if (course == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    var coursename = course.First().CourseId;
+        //    var courseVideos = db.AddSubCourse.Where(v => v.CourseId == coursename).ToList();
+
+        //    var viewModel = new AllCourse
+        //    {
+        //        Course = course.ToList(),
+        //        AddSubCourse = courseVideos
+        //    };
+
+        //    return View(viewModel);
+        //}
+
         public IActionResult Details(int id)
         {
-            var course = db.AddCourses.Where(x=>x.CourseId == id).ToList();
-            if (course == null)
-            {
-                return NotFound();
-            }
-            var coursename = course.First().CourseId;
-            var courseVideos = db.AddSubCourse.Where(v => v.CourseId == coursename).ToList();
-
-            var viewModel = new AllCourse
-            {
-                Course = course.ToList(),
-                AddSubCourse = courseVideos
-            };
-
-            return View(viewModel);
+            var data = db.AddSubCourse.Where(x=>x.SubCourseId == id).ToList();
+            return View(data);
         }
-
 
         public IActionResult ByNow(int id)
         {
@@ -132,8 +137,11 @@ namespace ElearningWithMvc.Controllers
                 { "receipt", "order_rcptid_" + DateTime.Now.Ticks },
                 { "payment_capture", 1 }
             };
+            var _keyId = "rzp_test_hyxzlMmdpXpNKr";
+            var _keySecret = "GWmkim1me8JM0XvpIucQwGCx";
 
-            var client = new RazorpayClient(_keyId, _keySecret);
+
+			var client = new RazorpayClient(_keyId, _keySecret);
             var razorpayOrder = client.Order.Create(options);
             ViewBag.razorpayOrder = razorpayOrder["id"];
             ViewBag.Key = _keyId;

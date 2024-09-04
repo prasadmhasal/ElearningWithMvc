@@ -110,5 +110,10 @@ namespace ElearningWithMvc.Controllers
         }
 
 
+        public  IActionResult LogOut()
+        {
+            return RedirectToAction("SignUp");
+        }
+
     }
 }

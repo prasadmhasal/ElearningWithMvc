@@ -1,5 +1,5 @@
 ﻿
-@model List<AddCourse>
+@model List<CourseVideo>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
 
@@ -17,11 +17,11 @@
             </div>
 
             <div class="project-info-box">
-                <p><b>Course:</b> <span id="courseName" class="font-weight-bold" style="color: #ff8a00;">@a.CourseName</span></p>
-                <p><b>Sub Course:</b> <span id="subCourseName" class="font-weight-bold" style="color: #dc3545;">@a.CourseName</span></p>
-                <p><b>Level:</b> <span id="topicName" class="font-weight-bold" style="color: #ff8a00;"></span></p>
+                <p><b>Course:</b> <span id="courseName" class="font-weight-bold" style="color: #ff8a00;">@a.Subcourse</span></p>
+                <p><b>Level:</b> <span id="topicName" class="font-weight-bold" style="color: #ff8a00;">@a.Level</span></p>
                 <p><b>Provider:</b> E-Learning</p>
-                <p class="mb-0"><b>Price:</b> ₹ <span id="price" class="font-weight-bold" style="color: Green;"></span></p>
+                <p class="mb-0"><b>Price:</b> ₹ <span id="price" class="font-weight-bold" style="color: Green;">@a.price</span></p>
+                <p><b>Description:</b> <span id="subCourseName" class="font-weight-bold" style="color: #dc3545;">@a.Description  </span></p>
             </div>
 
             <div class="project-info-box mt-2 mb-0">
@@ -44,7 +44,7 @@
         </div>
 
         <div class="col-md-5">    
-            <img src="@a.CourseImage" class="rounded" width="420" height="270" />
+            <img src="@a.SubCourseImage" class="rounded" width="420" height="270" />
             <div class="project-info-box">
                 <a> <input id="addToCart" asp-controller="Userdashboard" asp-action="AddToCart"  asp-route-id="@a.CourseId" class="btn btn-warning btn-block col-md-11 mt-3" type="submit" value="Add To Cart" /></a>
                 <button class="btn btn-outline-danger mt-2 btn-block col-md-11" type="button">Add to Wishlist</button>
